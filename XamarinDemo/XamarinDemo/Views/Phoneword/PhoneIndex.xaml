@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinDemo.Views.Phoneword.PhoneIndex">
@@ -7,6 +7,6 @@
         <Label Text="请输入电话号码:" />
         <Entry x:Name="phoneNumberText" Text="185 7484 4874" />
         <Button x:Name="translateButon" Text="转换" Clicked="translateButon_Clicked" />
-        <Button x:Name="callButton" Text="拨号" IsEnabled="false" Clicked="callButton_Clicked" />
+        <Button x:Name="callButton" Text="拨打" IsEnabled="false" Clicked="callButton_Clicked" />
     </StackLayout>
 </ContentPage>
