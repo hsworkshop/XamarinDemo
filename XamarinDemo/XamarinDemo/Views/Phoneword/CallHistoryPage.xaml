@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinDemo.Views.Phoneword;assembly=XamarinDemo"
+             x:Class="XamarinDemo.Views.Phoneword.CallHistoryPage"
+             Title="通话历史">
+    <!-- xmlns:local 需要参考一下官方教程中 关于XAML基础知识第3部分：XAML标记扩展-->
+    <ContentPage.Content>
+        <StackLayout>
+            <!--x:Static local:PhoneIndex.PhoneNumbers  静态绑定前必须使用xmlns:local 来确认资源所在命名空间-->
+            <ListView ItemsSource="{x:Static local:PhoneIndex.PhoneNumbers}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

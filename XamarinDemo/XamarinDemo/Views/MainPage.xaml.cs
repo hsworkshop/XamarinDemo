@@ -16,6 +16,7 @@ namespace XamarinDemo
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            //后退再进入为new一个新的对象，是否存在销毁？
             Navigation.PushAsync(new Views.Phoneword.PhoneIndex());
         }
     }
