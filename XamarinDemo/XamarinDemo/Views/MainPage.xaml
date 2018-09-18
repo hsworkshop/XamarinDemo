@@ -8,10 +8,7 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-
+        <Button Text="XamlDemo第一页" Clicked="Button_Clicked_1"/>
         <Button Text="拨号小程序" Clicked="Button_Clicked"/>
     </StackLayout>
 

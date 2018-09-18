@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinDemo.Views.XamlDemo.HelloXamlPage"
+             Title="XamlDemo页面">
+    <ContentPage.Content>
+        <StackLayout>
+            <Slider x:Name="sli" VerticalOptions="Center" ValueChanged="sli_ValueChanged" Minimum="0" Maximum="100" />
+
+            <Label x:Name="look_lab"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            
+            <Button x:Name="btn_one" Text="重置进度" Clicked="btn_one_Clicked" IsEnabled="False" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

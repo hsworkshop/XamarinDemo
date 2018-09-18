@@ -14,10 +14,15 @@ namespace XamarinDemo
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             //后退再进入为new一个新的对象，是否存在销毁？
-            Navigation.PushAsync(new Views.Phoneword.PhoneIndex());
+            await Navigation.PushAsync(new Views.Phoneword.PhoneIndex());
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Views.XamlDemo.HelloXamlPage());
         }
     }
 }
