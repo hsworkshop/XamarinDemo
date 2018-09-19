@@ -3,15 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinDemo.Views.XamlDemo.HelloXamlPage"
              Title="XamlDemo页面">
-    <ContentPage.Content>
-        <StackLayout>
+    <!--利用资源字典来控制 多个相同元素的值保持统一-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <LayoutOptions x:Key="hOptions"  Alignment="Center"/>
+            <LayoutOptions x:Key="vOptions"  Alignment="Center" Expands="True"/>
+            <x:Double x:Key="bWidth"> 3</x:Double>
+            <x:Double x:Key="RTion">-15</x:Double>
+            <x:Double x:Key="FS">24</x:Double>
+            <OnPlatform x:Key="textColor" x:TypeArguments="Color">
+                <On Platform="iOS" Value="Red" />
+                <On Platform="Android" Value="Green" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <!--根据平台差异化来定制不同平台关于ContentPage的padding值，主要考虑OnPlatform和On类的使用，TypeArguments可以理解为一个list<T>的泛型集合-->
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0"/>
+            <On Platform="Android" Value="0,0,0,0"/>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="0" >
             <Slider x:Name="sli" VerticalOptions="Center" ValueChanged="sli_ValueChanged" Minimum="0" Maximum="100" />
 
             <Label x:Name="look_lab"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="{x:Static LayoutOptions.CenterAndExpand}" 
                 HorizontalOptions="CenterAndExpand" />
-            
+
+            <Button Text="Do this!"
+        HorizontalOptions="{StaticResource hOptions}"
+        VerticalOptions="{StaticResource vOptions}"
+        BorderWidth="{StaticResource bWidth}"
+        Rotation="{StaticResource RTion}"
+        TextColor="{StaticResource textColor}"
+        FontSize="{StaticResource FS}" />
+
             <Button x:Name="btn_one" Text="重置进度" Clicked="btn_one_Clicked" IsEnabled="False" />
         </StackLayout>
-    </ContentPage.Content>
+        <RelativeLayout  Grid.Row="1">
+            <!--使用 RelativeLayout.XConstraint 来进行位置控制-->
+            <BoxView Color="Red" 
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=Constant,Constant=0}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=0}"
+                     />
+            <BoxView Color="Blue"
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Constant=-40}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=0}"
+                     />
+
+            <BoxView x:Name="oneThird"
+                 Color="Red"
+                 RelativeLayout.XConstraint=
+                     "{ConstraintExpression Type=RelativeToParent,
+                                            Property=Width,
+                                            Factor=0.33}"
+                 RelativeLayout.YConstraint=
+                     "{ConstraintExpression Type=RelativeToParent,
+                                            Property=Height,
+                                            Factor=0.33}"
+                 RelativeLayout.WidthConstraint=
+                     "{ConstraintExpression Type=RelativeToParent,
+                                            Property=Width,
+                                            Factor=0.33}"
+                 RelativeLayout.HeightConstraint=
+                     "{ConstraintExpression Type=RelativeToParent,
+                                            Property=Height,
+                                            Factor=0.33}"  />
+        </RelativeLayout>
+
+    </Grid>
+
+    
 </ContentPage>
