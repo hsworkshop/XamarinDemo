@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinDemo.Views.XamlDemo.BindingsPage"
+             Title="数据绑定的相关测试">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <Label Text="视图控件绑定测试" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Value}" BindingContext="{Reference new_sli}" VerticalOptions="CenterAndExpand"   HorizontalOptions="CenterAndExpand" />
+            <Slider x:Name="new_sli" Maximum="100" VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <StackLayout Grid.Row="1">
+            <Label Text="目标间双向绑定测试" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+            <Label x:Name="two_lab"  BindingContext="{Reference two_sli}" Text="{Binding Value}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <Slider x:Name="two_sli" Maximum="100" />
+            <Entry x:Name="two_input" BindingContext="{Reference two_sli}" Text="{Binding Value,Mode=TwoWay}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

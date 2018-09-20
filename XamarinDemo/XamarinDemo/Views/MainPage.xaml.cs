@@ -24,5 +24,10 @@ namespace XamarinDemo
         {
             await Navigation.PushAsync(new Views.XamlDemo.HelloXamlPage());
         }
+
+        private async void Button_Clicked_2(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Views.XamlDemo.BindingsPage());
+        }
     }
 }
